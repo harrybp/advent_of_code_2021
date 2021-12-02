@@ -15,20 +15,19 @@ func main() {
     defer file.Close()
     scanner := bufio.NewScanner(file)
 
+    // Regexp for extracting direction and distance
+    r := regexp.MustCompile(`(?P<direction>[a-z]*)\s(?P<distance>\d*)`)
+
     xPos := 0
     yPos := 0
     aim  := 0
 
-    // Regexp for extracting direction and distance
-    r := regexp.MustCompile(`(?P<direction>[a-z]*)\s(?P<distance>\d*)`)
-
-    // Read file into array of ints
+    // Read file
     for scanner.Scan() {
 
         // Extract direction and distance from line
         line := scanner.Text()
         matches := r.FindStringSubmatch(line)
-        r.FindStringSubmatch(line)
         direction := matches[1]
         distance, _ := strconv.Atoi(matches[2])
 
@@ -46,5 +45,3 @@ func main() {
 
     fmt.Println(xPos * yPos)
 }
-
-
