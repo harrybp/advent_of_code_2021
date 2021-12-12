@@ -38,8 +38,7 @@ func readHeights(fileName string) [rowSize][colSize]int {
 }
 
 // Recursive flood fill method, keep track of the size
-func floodFill(heights [rowSize][colSize]int, size int, row int, col int)
-              ([rowSize][colSize]int, int) {
+func floodFill(heights [rowSize][colSize]int, size int, row int, col int) ([rowSize][colSize]int, int) {
     if heights[row][col] == 9 || heights[row][col] == -1 {
         return heights, size
     }
